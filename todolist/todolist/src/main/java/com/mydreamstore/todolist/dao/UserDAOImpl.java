@@ -56,6 +56,23 @@ public class UserDAOImpl implements UserDAO {
 		     
 	}
 	
+	@Transactional
+	public boolean isValidUser(String mailid, String password) {
+		String hql = "from User where mailid= '" + mailid + "' and " + " password ='" + password+"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<User> list = (List<User>) query.list();
+		
+		if (list != null && !list.isEmpty()) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
+	
 	
 
 }
