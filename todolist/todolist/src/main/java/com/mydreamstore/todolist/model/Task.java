@@ -13,11 +13,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class Task {
 	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int task_id;
 	private String task_title; 
 	private String description;
+	private String status;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public int getTask_id() {
 		return task_id;
 	}
@@ -35,7 +43,5 @@ public class Task {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	} 
-	
-
+	}
 }

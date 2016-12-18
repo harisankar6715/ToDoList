@@ -16,22 +16,16 @@ public class TestUserDAO {
 
 
 	AnnotationConfigApplicationContext context;
-
 	@Before
 	public void init() {
-
 		context = new AnnotationConfigApplicationContext();
 		context.scan("com.mydreamstore");
 		context.refresh();
 		userDAO = (UserDAO) context.getBean("userDAO");
 	}
-
 	@Test
-
 	public void UserTestCase() {
 		int size = userDAO.list().size();
 		assertEquals("user list test case ", 1, size);
-
 	}
-
 }

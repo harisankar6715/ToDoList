@@ -20,7 +20,7 @@ public class TaskTest {
 		//task.setTask_id("TK1");
 		task.setTask_title("Deposite cash in bank");
 		task.setDescription("To take 10000 rs from home and deposit at Andhra bank. A/C details XXXX IFSC : XXXXX");
-		
+		task.setStatus("Done");
 	    taskDAO.saveOrUpdate(task);
 		
 	    

@@ -15,30 +15,33 @@
 <!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ToDoList</title> 
-
+<title>ToDoList | ExistingTask</title>
 </head>
-<body> 
-<!-- Fixed navbar --> 
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">ToDoList</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-          <li><a href="loginhere">SignIn</a></li> 
-          <li><a href="register">SignUp</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+<body>
 
+<h1 align="center"><b><u>TASKS</u></b></h1>
+<c:if test="${!empty taskList}">
+		<table border="1" align="center">
+			<tr>
+				<th> ID</th>
+				<th> TASK TITLE</th>
+				<th> DESCRIPTION</th>
+				<th> STATUS</th>
+				<th> DELETE</th>
+				<th> UPDATE</th>
+			</tr>
+
+			<c:forEach items="${taskList }" var="task">
+				<tr>
+					<td>${task.task_id}</td>
+					<td>${task.task_title}</td>
+					<td>${task.description}</td>
+					<td>${task.status}</td>
+					<td> <a href="<c:url value='task/delete/${task.task_id}' />">Delete</a></td>
+					<td> <a href="<c:url value='task/update/${task.task_id}' />">Update</a></td>
+					</tr>
+			</c:forEach>
+		</table>
+	</c:if>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.mydreamstore.todolist.dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,17 +23,16 @@ public class TaskDAOImpl implements TaskDAO{
 
 	@Transactional
 	public void saveOrUpdate(Task task) {
-		sessionFactory.getCurrentSession().saveOrUpdate(task);
-
+		Session s =sessionFactory.getCurrentSession();
+		s.saveOrUpdate(task);
+		s.flush();
 	}
-
 	@Transactional
 	public void delete(int task_id) {
 		Task taskTodelete = new Task();
 		taskTodelete.setTask_id(task_id);
 		sessionFactory.getCurrentSession().delete(taskTodelete);
 	}
-
 	@Transactional
 	public Task getTask(int task_id) {
 		String hql = "from Task where task_id=:task_id";
@@ -43,7 +43,6 @@ public class TaskDAOImpl implements TaskDAO{
 			return gotTask.get(0);
 		return null;
 	}
-
 	@Transactional
 	public List<Task> list() {
 		String hql = "from Task";
@@ -51,6 +50,4 @@ public class TaskDAOImpl implements TaskDAO{
 		List<Task> list = (List<Task>)query.list();
 		return list;
 	}
-
-
 }

@@ -15,16 +15,11 @@ public class UserTest {
 		context.refresh();
 		UserDAO userDAO = (UserDAO) context.getBean("userDAO");
 		User user = (User) context.getBean("user");
-		
 		// Create Operation
 		user.setName("HARI");
 		user.setPassword("hari");
 		user.setMailid("harisankar6715@gmail.com");
-		
-	  
-		
 	    userDAO.saveOrUpdate(user);
-		
 	    if(userDAO.get("harisankar6715@gmail.com")== null)
 		{
 			System.out.println("User does not exist");
@@ -34,7 +29,5 @@ public class UserTest {
 			System.out.println("User exists..");
 			System.out.println();
 		} 
-
 	}
-
 }

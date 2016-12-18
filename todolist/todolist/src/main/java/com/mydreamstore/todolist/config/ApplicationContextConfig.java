@@ -33,16 +33,13 @@ public class ApplicationContextConfig {
 	dataSource.setUsername("mds");
 	dataSource.setPassword("mds");
 	return dataSource;
-	
 	}
-	
 private Properties getHibernateProperties() {
 		Properties properties=new Properties();
 		properties.put("hibernate.show_sql","true");
 		properties.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
 		return properties;
-		}
-	
+	}
 @Autowired
 @Bean(name="sessionFactory")
 public SessionFactory getSessionFactory(DataSource datasource) { 
@@ -51,13 +48,11 @@ public SessionFactory getSessionFactory(DataSource datasource) {
 	sessionBuilder.addAnnotatedClass(User.class);
 	sessionBuilder.addAnnotatedClass(Task.class);
 	return sessionBuilder.buildSessionFactory();
-
 	}
-
 @Autowired
 @Bean(name = "transactionMnager")
 public HibernateTransactionManager getTransactionManager (SessionFactory sessionFactory) {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 		return transactionManager;
 	}
-	}
+}

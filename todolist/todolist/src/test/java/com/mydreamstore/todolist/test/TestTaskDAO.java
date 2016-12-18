@@ -8,13 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.mydreamstore.todolist.dao.TaskDAO;
-
-
 public class TestTaskDAO { 
 	
 	@Autowired
 	TaskDAO taskDAO;
-
 
 	AnnotationConfigApplicationContext context;
 
