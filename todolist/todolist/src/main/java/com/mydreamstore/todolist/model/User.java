@@ -1,7 +1,11 @@
 package com.mydreamstore.todolist.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -11,12 +15,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class User { 
 	
+	@OneToMany(mappedBy="user",fetch = FetchType.EAGER)
+	private Set<Task> tasks;
 	
 	private String name;
 	@Id
 	private String mailid;
 	private String password;
 	
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
 	public String getName() {
 		return name;
 	}
@@ -35,7 +47,4 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	} 
-	
-	
-
 }

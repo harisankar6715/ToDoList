@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -12,14 +14,28 @@ import org.springframework.stereotype.Component;
 @Table(name="TASK")
 @Component
 public class Task {
-	
-	@Id 
+		@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int task_id;
 	private String task_title; 
 	private String description;
-	private String status;
-	
+	private String status; 
+	private String user_mailid;
+	@ManyToOne
+	@JoinColumn(name="user_mailid" , nullable = false, updatable = false, insertable = false)
+	private User user;
+	public String getUser_mailid() {
+		return user_mailid;
+	}
+	public void setUser_mailid(String user_mailid) {
+		this.user_mailid = user_mailid;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public String getStatus() {
 		return status;
 	}

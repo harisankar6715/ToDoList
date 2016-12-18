@@ -17,10 +17,11 @@ public class TaskTest {
 		Task task = (Task) context.getBean("task");
 		
 		// Create Operation
-		//task.setTask_id("TK1");
+		
 		task.setTask_title("Deposite cash in bank");
 		task.setDescription("To take 10000 rs from home and deposit at Andhra bank. A/C details XXXX IFSC : XXXXX");
 		task.setStatus("Done");
+		task.setUser_mailid("harisankar6715@gmail.com");
 	    taskDAO.saveOrUpdate(task);
 		
 	    
